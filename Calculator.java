@@ -7,20 +7,36 @@ public class Calculator {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         boolean shouldRestart = true;
+        boolean shouldClear = false;
+        double sum = 0;
+        double firstNum = 0;
 
         while (shouldRestart) {
-            System.out.println("Enter 1st Number: ");
-            int firstNum = getIntInput(input);
-            System.out.println("Enter 2nd Number: ");
+            if (sum != 0) {
+                System.out.println("Would you like to clear the calculator?");
+                System.out.print("CLEAR: " + sum + "? (y/n): ");
+                shouldClear = getYesOrNoInput(input);
+                if (shouldClear) {
+                    sum = 0;
+                }
+            }
+            if (sum == 0) {
+                System.out.print("Enter 1st Number: ");
+                firstNum = getIntInput(input);
+            } else {
+                firstNum = sum;
+            }
+            System.out.print("Enter 2nd Number: ");
             int secondNum = getIntInput(input);
+            input.nextLine();
             System.out.println("What Operation would you like to do?");
-            System.out.println("Type the number next to the operation to select it");
-            System.out.println("1: Add 2: Subtract 3: Multiply 4: Divide ");
-            int operation = getIntInput(input);
+            System.out.println("type the symbol that best represents it.");
+            System.out.print("[ + | - | * | / ]:  ");
+            String operation = input.nextLine();
 
-            if (operation > 0 && operation < 5) {
-                double result = result(firstNum, secondNum, operation);
-                System.out.println("Result: " + result);
+            if (operation.equals("+") || operation.equals("-") || operation.equals("*") || operation.equals("/")) {
+                sum = result(firstNum, secondNum, operation);
+                System.out.println("Result: " + sum);
                 System.out.print("Would you like to do another problem? (y/n): ");
                 shouldRestart = getYesOrNoInput(input);
             } else {
@@ -60,14 +76,14 @@ public class Calculator {
         }
     }
 
-    public static double result(int num1, int num2, int operation) {
-        if (operation == 1)
+    public static double result(double num1, int num2, String operation) {
+        if (operation.equals("+"))
             return num1 + num2;
-        else if (operation == 2)
+        else if (operation.equals("-"))
             return num1 - num2;
-        else if (operation == 3)
+        else if (operation.equals("*"))
             return num1 * num2;
-        else if (operation == 4)
+        else if (operation.equals("/"))
             return (double) num1 / num2;
         else {
             return -1;
