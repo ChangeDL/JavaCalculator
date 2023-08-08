@@ -27,7 +27,7 @@ public class Calculator {
                 firstNum = sum;
             }
             System.out.print("Enter 2nd Number: ");
-            int secondNum = getIntInput(input);
+            double secondNum = getIntInput(input);
             input.nextLine();
             System.out.println("What Operation would you like to do?");
             System.out.println("type the symbol that best represents it.");
@@ -49,11 +49,11 @@ public class Calculator {
         input.close();
     }
 
-    public static int getIntInput(Scanner scanner) {
-        int number;
+    public static double getIntInput(Scanner scanner) {
+        double number;
         while (true) {
             try {
-                number = scanner.nextInt();
+                number = scanner.nextDouble();
                 break; // Exit the loop if input is a valid integer
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a number:");
@@ -76,7 +76,7 @@ public class Calculator {
         }
     }
 
-    public static double result(double num1, int num2, String operation) {
+    public static double result(double num1, double num2, String operation) {
         if (operation.equals("+"))
             return num1 + num2;
         else if (operation.equals("-"))
