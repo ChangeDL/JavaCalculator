@@ -26,12 +26,12 @@ public class Calculator {
             } else {
                 firstNum = sum;
             }
-            System.out.print("Enter 2nd Number: ");
+            System.out.print("Enter 2nd Number (If you're doing square root this won't matter): ");
             double secondNum = getIntInput(input);
             input.nextLine();
             System.out.println("What Operation would you like to do?");
             System.out.println("type the symbol that best represents it.");
-            System.out.print("[ + | - | * | / ]:  ");
+            System.out.print("[ + | - | * | / | ^ | sqrt (2nd number won't matter) ]:  ");
             String operation = getOperatorInput(input);
             sum = result(firstNum, secondNum, operation);
             System.out.println("Result: " + sum);
@@ -60,7 +60,8 @@ public class Calculator {
         String operator;
         while (true) {
             operator = scanner.next().trim(); // Trim any leading/trailing spaces
-            if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")) {
+            if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")
+                    || operator.equals("^") || operator.equals("sqrt")) {
                 break; // Exit the loop if input is a valid operator
             } else {
                 System.out.println("Invalid input. Please enter +, -, *, or /:");
@@ -91,6 +92,10 @@ public class Calculator {
             return num1 * num2;
         else if (operation.equals("/"))
             return (double) num1 / num2;
+        else if (operation.equals("^"))
+            return (double) Math.pow(num1, num2);
+        else if (operation.equals("sqrt"))
+            return (double) Math.sqrt(num1);
         else {
             return -1;
         }
