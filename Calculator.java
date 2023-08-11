@@ -10,6 +10,8 @@ public class Calculator {
         boolean shouldClear = false;
         double sum = 0;
         double firstNum = 0;
+        double secondNum = 0;
+        String operation = "";
 
         while (shouldRestart) {
             if (sum != 0) {
@@ -20,19 +22,46 @@ public class Calculator {
                     sum = 0;
                 }
             }
+
             if (sum == 0) {
-                System.out.print("Enter 1st Number: ");
-                firstNum = getIntInput(input);
+                System.out.print("Are you trying to find the square root of a number? (y/n): ");
             } else {
-                firstNum = sum;
+                System.out.print("Do you want to find the square root of " + sum + " (y/n): ");
             }
-            System.out.print("Enter 2nd Number (If you're doing square root this won't matter): ");
-            double secondNum = getIntInput(input);
-            input.nextLine();
-            System.out.println("What Operation would you like to do?");
-            System.out.println("type the symbol that best represents it.");
-            System.out.print("[ + | - | * | / | ^ | sqrt (2nd number won't matter) ]:  ");
-            String operation = getOperatorInput(input);
+            boolean squareRootCheck = getYesOrNoInput(input);
+            if (squareRootCheck) {
+                operation = "sqrt";
+                if (sum == 0) {
+                    System.out.print("What number are you looking for the square root for?: ");
+                    firstNum = getSqrtIntInput(input);
+                } else if (sum < 0) {
+                    System.out.print("Negative numbers can be square rooted, please type in a new number: ");
+                    firstNum = getSqrtIntInput(input);
+                } else {
+                    firstNum = sum;
+                }
+            }
+
+            if (!squareRootCheck) {
+
+                if (sum == 0) {
+                    System.out.print("Enter 1st Number: ");
+                    firstNum = getIntInput(input);
+                } else {
+                    firstNum = sum;
+                }
+
+                if (!squareRootCheck) {
+                    System.out.print("Enter 2nd Number: ");
+                    secondNum = getIntInput(input);
+                }
+
+                input.nextLine();
+                System.out.println("What Operation would you like to do?");
+                System.out.println("type the symbol that best represents it.");
+                System.out.print("[ + | - | * | / | ^ ]:  ");
+                operation = getOperatorInput(input);
+            }
             sum = result(firstNum, secondNum, operation);
             System.out.println("Result: " + sum);
             System.out.print("Would you like to do another problem? (y/n): ");
@@ -49,7 +78,25 @@ public class Calculator {
                 number = scanner.nextDouble();
                 break; // Exit the loop if input is a valid integer
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a number:");
+                System.out.print("Invalid input. Please enter a number: ");
+                scanner.next(); // Clear the invalid input from the scanner
+            }
+        }
+        return number;
+    }
+
+    public static double getSqrtIntInput(Scanner scanner) {
+        double number;
+        while (true) {
+            try {
+                number = scanner.nextDouble();
+                if (number >= 0) {
+                    break; // Exit the loop if input is a valid integer
+                } else {
+                    System.out.print("Invalid input. Please enter a non-negative number: ");
+                }
+            } catch (InputMismatchException e) {
+                System.out.print("Invalid input. Please enter a number: ");
                 scanner.next(); // Clear the invalid input from the scanner
             }
         }
