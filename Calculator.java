@@ -111,7 +111,7 @@ public class Calculator {
                     || operator.equals("^") || operator.equals("sqrt") || operator.equals("%")) {
                 break; // Exit the loop if input is a valid operator
             } else {
-                System.out.println("Invalid input. Please enter +, -, *, /, ^, %:");
+                System.out.println("Invalid input. Please enter +, -, *, /, ^, or %:");
             }
         }
         return operator;
