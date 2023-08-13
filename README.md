@@ -8,7 +8,7 @@ UPDATE (8/8/2023): Created Variable to contain the calculation result to allow f
 
 UPDATE (8/9/2023): Added an exponent and square root option.
 
-UPDATE (8/9/2023): Adjusted code for square root to be asked first so the user will only have to input one number instead of having to do extra steps. Also added error handling so insure no errors or NaN when finding square roots.
+UPDATE (8/9/2023): Adjusted code for square root to be asked first so the user will only have to input one number instead of having to do extra steps. Also added error handling to ensure no errors or NaN when finding square roots.
 
 UPDATE (8/13/2023): Put the order of inputs in the correct order [num1, operation, num2]. Also added the option to find the percentage of a number
 
