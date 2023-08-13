@@ -51,16 +51,16 @@ public class Calculator {
                     firstNum = sum;
                 }
 
+                input.nextLine();
+                System.out.println("What Operation would you like to do?");
+                System.out.println("type the symbol that best represents it.");
+                System.out.print("[ + | - | * | / | ^ | % ]:  ");
+                operation = getOperatorInput(input);
                 if (!squareRootCheck) {
                     System.out.print("Enter 2nd Number: ");
                     secondNum = getIntInput(input);
                 }
 
-                input.nextLine();
-                System.out.println("What Operation would you like to do?");
-                System.out.println("type the symbol that best represents it.");
-                System.out.print("[ + | - | * | / | ^ ]:  ");
-                operation = getOperatorInput(input);
             }
             sum = result(firstNum, secondNum, operation);
             System.out.println("Result: " + sum);
@@ -108,7 +108,7 @@ public class Calculator {
         while (true) {
             operator = scanner.next().trim(); // Trim any leading/trailing spaces
             if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")
-                    || operator.equals("^") || operator.equals("sqrt")) {
+                    || operator.equals("^") || operator.equals("sqrt") || operator.equals("%")) {
                 break; // Exit the loop if input is a valid operator
             } else {
                 System.out.println("Invalid input. Please enter +, -, *, or /:");
@@ -143,6 +143,8 @@ public class Calculator {
             return (double) Math.pow(num1, num2);
         else if (operation.equals("sqrt"))
             return (double) Math.sqrt(num1);
+        else if (operation.equals("%"))
+            return (double) num1 * (num2 * .01);
         else {
             return -1;
         }
