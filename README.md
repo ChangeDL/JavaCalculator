@@ -12,7 +12,10 @@ UPDATE (8/9/2023): Adjusted code for square root to be asked first so the user w
 
 UPDATE (8/13/2023): Put the order of inputs in the correct order [num1, operation, num2]. Also added the option to find the percentage of a number
 
-
+## DEMOS
 
 (8/8/2023 DEMO)
 ![CalculatorDemoVideo](https://github.com/ChangeDL/JavaCalculator/assets/108757380/3a9543d1-a4d8-4a48-8fb3-f4778f54ae17)
+
+(8/13/2023 DEMO)
+![CalculatorDemoVideo8-13-2023](https://github.com/ChangeDL/JavaCalculator/assets/108757380/b38fad4b-bcbe-43fc-9c4e-8dc8aea5a82c)
